@@ -62,28 +62,56 @@ $spacing-0500: f.em(40);
 
 // light mode
 $primary-color-l: $black;
-$secondary-color-l: $green-d;
+$secondary-color-l: $green-der;
 $error-color-l: $orange-d;
+
+$primary-bg-color-l: $white;
+$secondary-bg-color-l: $green-ler;
 
 // dark mode
 $primary-color-d: $white;
 $secondary-color-d: $green-l;
 $error-color-d: $orange-l;
 
+$primary-bg-color-d: $black;
+$secondary-bg-color-d: $green-der;
+
+main,
 main * {
   --primary-color: #{$primary-color-l};
   --secondary-color: #{$secondary-color-l};
   --error-color: #{$error-color-l};
 
+  --primary-bg-color: #{$primary-bg-color-l};
+  --secondary-bg-color: #{$secondary-bg-color-l};
+
   --primary-brdr-color: #{$primary-color-l};
   --secondary-brdr-color: #{$secondary-color-l};
 }
 
+main.dark,
 main.dark * {
   --primary-color: #{$primary-color-d};
   --secondary-color: #{$secondary-color-d};
   --error-color: #{$error-color-d};
 
+  --primary-bg-color: #{$primary-bg-color-d};
+  --secondary-bg-color: #{$secondary-bg-color-d};
+
   --primary-brdr-color: #{$primary-color-d};
   --secondary-brdr-color: #{$secondary-color-d};
+}
+
+main {
+  background-color: var(--primary-bg-color);
+
+  transition: background-color 0.7s ease-in-out;
+}
+
+main * {
+  color: var(--primary-color);
+
+  transition:
+    background-color 0.7s ease-in-out,
+    stroke 0.7s ease-in-out;
 }
