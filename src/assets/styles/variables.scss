@@ -1,0 +1,59 @@
+@use '/src/assets/styles/functions.scss' as f;
+
+// VARIABLES
+// / Colors:
+// // Neutrals:
+$white: #effaf1;
+$black: #04100c;
+
+// /// Orange:
+$orange-d: #e02200;
+$orange-m: #ff2f0a;
+$orange-l: #ff6347;
+
+// // Green:
+$green-ler: #d3eedc;
+$green-l: #95d5b2;
+$green-m: #52b788;
+$green-d: #2d6a4f;
+$green-der: #173a2c;
+
+// TYPOGRAPHY
+
+// / Font 1: Kumbh Sans:
+$font-family: 'Times New Roman';
+
+$font-1: (
+  font-size: f.rem(24),
+  font-weight: 500,
+  line-height: 1.2,
+  letter-spacing: em(0),
+);
+
+$font-2-m: (
+  font-size: f.rem(16),
+  font-weight: 500,
+  line-height: 1.5,
+  letter-spacing: em(0),
+);
+
+$font-2-r: (
+  font-size: f.rem(16),
+  font-weight: 400,
+  line-height: 1.5,
+  letter-spacing: em(0),
+);
+
+$font-3: (
+  font-size: f.rem(13),
+  font-weight: 500,
+  line-height: 1.2,
+  letter-spacing: em(0),
+);
+
+// Spacing:
+
+$spacing-0100: f.em(8);
+$spacing-0200: f.em(16);
+$spacing-0300: f.em(24);
+$spacing-0500: f.em(40);
