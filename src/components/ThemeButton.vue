@@ -58,9 +58,16 @@ main.dark .theme-button svg {
 
 .theme-button svg path {
   transform-origin: center center;
-  fill: transparent;
   stroke: var(--primary-color);
   stroke-width: 1px;
+}
+
+.sun {
+  fill: transparent;
+}
+
+.moon {
+  fill: var(--primary-color);
 }
 
 .sun,
