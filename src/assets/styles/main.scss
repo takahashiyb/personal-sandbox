@@ -1,3 +1,5 @@
+@use 'functions';
+@use 'variables';
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 // RESETS:
@@ -7,7 +9,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: v.$font-family;
 }
 
 /* 2. Remove default margin */
@@ -79,8 +80,70 @@ h6 {
   isolation: isolate;
 }
 
+// Custom properties:
+
+// light mode
+$primary-color-l: v.$black;
+$secondary-color-l: v.$green-der;
+$error-color-l: v.$orange-d;
+
+$primary-bg-color-l: v.$white;
+$secondary-bg-color-l: v.$green-ler;
+
+// dark mode
+$primary-color-d: v.$white;
+$secondary-color-d: v.$green-l;
+$error-color-d: v.$orange-l;
+
+$primary-bg-color-d: v.$black;
+$secondary-bg-color-d: v.$green-der;
+
+main,
+main * {
+  --primary-color: #{$primary-color-l};
+  --secondary-color: #{$secondary-color-l};
+  --error-color: #{$error-color-l};
+
+  --primary-bg-color: #{$primary-bg-color-l};
+  --secondary-bg-color: #{$secondary-bg-color-l};
+
+  --primary-brdr-color: #{$primary-color-l};
+  --secondary-brdr-color: #{$secondary-color-l};
+}
+
+main.dark,
+main.dark * {
+  --primary-color: #{$primary-color-d};
+  --secondary-color: #{$secondary-color-d};
+  --error-color: #{$error-color-d};
+
+  --primary-bg-color: #{$primary-bg-color-d};
+  --secondary-bg-color: #{$secondary-bg-color-d};
+
+  --primary-brdr-color: #{$primary-color-d};
+  --secondary-brdr-color: #{$secondary-color-d};
+}
+
 * {
   font-family: 'Outfit';
+}
+
+main {
+  background-color: var(--primary-bg-color);
+
+  transition: background-color 0.7s ease-in-out;
+}
+
+main * {
+  color: var(--primary-color);
+
+  transition:
+    background-color 0.7s ease-in-out,
+    stroke 0.7s ease-in-out;
+}
+
+main .error-message {
+  color: var(--error-color);
 }
 
 .sr-only {
@@ -103,4 +166,16 @@ html {
 main {
   min-height: 100dvh;
   background-color: var(--primary-bg-color);
+
+  @include f.responsive-grid(v.$spacing-0500, v.$spacing-0000, 1, 1000px);
+}
+
+header {
+  min-width: 100%;
+
+  grid-column: 1/-1;
+}
+
+.content {
+  grid-column: 2/-2;
 }

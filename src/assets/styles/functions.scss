@@ -69,6 +69,8 @@
 @mixin responsive-grid($space-lr, $space-gap, $col-count, $max-width: 20em) {
   display: grid;
   gap: $space-gap;
+  align-items: start;
+  grid-auto-rows: min-content;
 
   grid-template-columns:
     1fr repeat(
