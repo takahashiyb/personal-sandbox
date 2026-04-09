@@ -9,13 +9,24 @@ function switchTheme() {
 }
 </script>
 <template>
-  <header class="header">
-    <ThemeButton :buttonPress="switchTheme" />
+  <header>
+    <div class="header">
+      <ThemeButton :buttonPress="switchTheme" />
+    </div>
   </header>
 </template>
 <style scoped lang="scss">
 .header {
+  width: 100%;
+  max-width: 1000px;
+
+  padding-top: v.$spacing-0200;
+  padding-bottom: v.$spacing-0200;
+  padding-inline: v.$spacing-0200;
+
   display: flex;
   flex-direction: row-reverse;
+
+  justify-self: center;
 }
 </style>
