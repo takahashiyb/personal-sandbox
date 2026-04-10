@@ -1,5 +1,5 @@
-@use 'functions';
-@use 'variables';
+@use './variables.scss' as *;
+@use './functions.scss' as *;
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 // RESETS:
@@ -83,20 +83,20 @@ h6 {
 // Custom properties:
 
 // light mode
-$primary-color-l: v.$black;
-$secondary-color-l: v.$green-der;
-$error-color-l: v.$orange-d;
+$primary-color-l: $black;
+$secondary-color-l: $green-der;
+$error-color-l: $orange-d;
 
-$primary-bg-color-l: v.$white;
-$secondary-bg-color-l: v.$green-ler;
+$primary-bg-color-l: $white;
+$secondary-bg-color-l: $green-ler;
 
 // dark mode
-$primary-color-d: v.$white;
-$secondary-color-d: v.$green-l;
-$error-color-d: v.$orange-l;
+$primary-color-d: $white;
+$secondary-color-d: $green-l;
+$error-color-d: $orange-l;
 
-$primary-bg-color-d: v.$black;
-$secondary-bg-color-d: v.$green-der;
+$primary-bg-color-d: $black;
+$secondary-bg-color-d: $green-der;
 
 main,
 main * {
@@ -162,7 +162,7 @@ main .error-message {
 main {
   min-height: 100svh;
 
-  @include f.responsive-grid(v.$spacing-0500, v.$spacing-0000, 1, f.rem(1000));
+  @include responsive-grid($spacing-0500, $spacing-0000, 1, rem(1000));
 }
 
 header {
