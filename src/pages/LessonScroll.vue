@@ -23,10 +23,10 @@
         <p>animation: {name of the keyframe} {type of easing} focus on the type of easing</p>
       </div>
 
-      <div class="block linear">Linear</div>
-      <div class="block ease-i">Ease in</div>
-      <div class="block ease-io">Ease in out</div>
-      <div class="block ease-o">Ease out</div>
+      <div class="ease ease--linear">Linear</div>
+      <div class="ease ease--ease-in">Ease in</div>
+      <div class="ease ease--ease-in-out">Ease in out</div>
+      <div class="ease ease--ease-out">Ease out</div>
       <div class="block explanation">
         <p>animation-timeline: view()</p>
 
@@ -38,14 +38,14 @@
         <p>The values of both styles will be the same.</p>
         <p>You can set only one style, with or without %, let's sample this first:</p>
       </div>
-      <div class="color entry">
+      <div class="color" style="animation-range: entry">
         <p>Entry</p>
         <p>Both entries start when the top of the element enters the viewport</p>
         <p>Both entries finish when the bottom of the element enters the viewport</p>
       </div>
-      <div class="color entry-c">entry-crossing</div>
-      <div class="color exit-c">exit-crossing</div>
-      <div class="color exit">
+      <div class="color" style="animation-range: entry-crossing">entry-crossing</div>
+      <div class="color" style="animation-range: exit-crossing">exit-crossing</div>
+      <div class="color" style="animation-range: exit">
         <p>Exit</p>
         <p>Both exits start when the top of the element exits the viewport</p>
         <p>Both exits finish when the bottom of the element exits the viewport</p>
@@ -56,22 +56,22 @@
           height
         </p>
       </div>
-      <div class="color row-excess entry">
+      <div class="color row-excess" style="animation-range: entry">
         <p>Entry starts when it enters the viewport</p>
 
         <p>and finishes when its top touches the top of the viewport</p>
       </div>
-      <div class="color row-excess entry-c">
+      <div class="color row-excess" style="animation-range: entry-crossing">
         <p>Entry-crossing starts when it enters the viewport</p>
 
         <p>and finishes when its bottom enters the viewport</p>
       </div>
-      <div class="color row-excess exit-c">
+      <div class="color row-excess" style="animation-range: exit-crossing">
         <p>Exit-crossing starts its top touches the top of the viewport</p>
 
         <p>and finishes when its top touches the top of the viewport</p>
       </div>
-      <div class="color row-excess exit">
+      <div class="color row-excess" style="animation-range: exit">
         <p>Exit starts its bottom enters the viewport</p>
 
         <p>and finishes when its top touches the top of the viewport</p>
@@ -195,24 +195,7 @@
       <div class="block translate" style="animation-range: cover 0 contain 40%"><p>20%</p></div>
       <div class="block translate" style="animation-range: cover 0 contain 60%"><p>40%</p></div>
       <div class="block translate" style="animation-range: cover 0 contain 80%"><p>60%</p></div>
-      <div class="block"></div>
-      <div class="block"></div>
-      <div class="block"></div>
-      <div class="block"></div>
-      <div class="block"></div>
-      <div class="block"></div>
-      <div class="block"></div>
-      <div class="block"></div>
-      <div class="block"></div>
-      <div class="block"></div>
-      <div class="block"></div>
-      <div class="block"></div>
-      <div class="block"></div>
-      <div class="block"></div>
-      <div class="block"></div>
-      <div class="block"></div>
-      <div class="block"></div>
-      <div class="block"></div>
+      <div class="block" style="grid-row: span 6; grid-column: span 4">Extra Space</div>
     </div>
   </div>
 </template>
@@ -245,7 +228,46 @@ h1 {
   align-content: center;
   align-items: start;
 
+  animation: appear linear;
+  animation-timeline: view();
+  animation-range: cover 0 contain 40%;
+
   padding-inline: v.$spacing-0200;
+}
+
+.ease {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  align-items: start;
+
+  padding-inline: v.$spacing-0200;
+
+  border: f.rem(3) solid var(--secondary-color);
+}
+
+.ease--linear {
+  animation: color linear;
+  animation-timeline: view();
+  animation-range: cover 0 contain 40%;
+}
+
+.ease--ease-in {
+  animation: color ease-in;
+  animation-timeline: view();
+  animation-range: cover 0 contain 40%;
+}
+
+.ease--ease-in-out {
+  animation: color ease-in-out;
+  animation-timeline: view();
+  animation-range: cover 0 contain 40%;
+}
+
+.ease--ease-out {
+  animation: color ease-out;
+  animation-timeline: view();
+  animation-range: cover 0 contain 40%;
 }
 
 @keyframes appear {
@@ -274,40 +296,6 @@ h1 {
   grid-column: span 4;
 }
 
-.block {
-  animation: appear linear;
-  animation-timeline: view();
-  animation-range: cover 0 contain 40%;
-}
-
-.linear {
-  animation: color linear;
-  animation-timeline: view();
-
-  animation-range: contain 40% contain 80%;
-}
-
-.ease-i {
-  animation: color ease-in;
-  animation-timeline: view();
-
-  animation-range: contain 40% contain 80%;
-}
-
-.ease-o {
-  animation: color ease-out;
-  animation-timeline: view();
-
-  animation-range: contain 40% contain 80%;
-}
-
-.ease-io {
-  animation: color ease-in-out;
-  animation-timeline: view();
-
-  animation-range: contain 40% contain 80%;
-}
-
 .color {
   border: f.rem(3) solid var(--secondary-color);
   box-shadow:
@@ -322,22 +310,6 @@ h1 {
   animation-timeline: view();
 
   padding-inline: v.$spacing-0200;
-}
-
-.entry {
-  animation-range: entry;
-}
-
-.entry-c {
-  animation-range: entry-crossing;
-}
-
-.exit {
-  animation-range: exit;
-}
-
-.exit-c {
-  animation-range: exit-crossing;
 }
 
 .contain {
