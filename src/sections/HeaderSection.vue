@@ -18,7 +18,7 @@ function switchTheme() {
 <style scoped lang="scss">
 .header {
   width: 100%;
-  max-width: 1000px;
+  max-width: f.rem(1000);
 
   padding-top: v.$spacing-0200;
   padding-bottom: v.$spacing-0200;

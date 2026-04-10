@@ -159,15 +159,10 @@ main .error-message {
   border: 0;
 }
 
-html {
-  min-height: 100dvh;
-}
-
 main {
-  min-height: 100dvh;
-  background-color: var(--primary-bg-color);
+  min-height: 100svh;
 
-  @include f.responsive-grid(v.$spacing-0500, v.$spacing-0000, 1, 1000px);
+  @include f.responsive-grid(v.$spacing-0500, v.$spacing-0000, 1, f.rem(1000));
 }
 
 header {
