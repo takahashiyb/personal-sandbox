@@ -106,6 +106,10 @@ main * {
 
   --primary-color: #{$primary-color-l};
   --secondary-color: #{$secondary-color-l};
+
+  --primary-color-rev: #{$primary-color-d};
+  --secondary-color-rev: #{$secondary-color-d};
+
   --error-color: #{$error-color-l};
 
   --primary-bg-color: #{$primary-bg-color-l};
@@ -119,6 +123,10 @@ main.dark,
 main.dark * {
   --primary-color: #{$primary-color-d};
   --secondary-color: #{$secondary-color-d};
+
+  --primary-color-rev: #{$primary-color-l};
+  --secondary-color-rev: #{$secondary-color-l};
+
   --error-color: #{$error-color-d};
 
   --primary-bg-color: #{$primary-bg-color-d};
