@@ -87,14 +87,14 @@ function checkvalidity(event: Event) {
 .input {
   min-width: 0;
   width: 100%;
-  background-color: var(--primary-bg-color);
+  background-color: hsl(var(--primary-bg-color));
 
   grid-column: 1/3;
   grid-row: 2;
 
   border-width: 2px;
   border-style: solid;
-  border-color: var(--primary-brdr-color);
+  border-color: hsl(var(--primary-brdr-color));
   border-radius: 4px;
 
   outline: none;
@@ -102,7 +102,7 @@ function checkvalidity(event: Event) {
 
 .input:hover,
 .input:focus {
-  border-color: var(--secondary-brdr-color);
+  border-color: hsl(var(--secondary-brdr-color));
 }
 </style>
 

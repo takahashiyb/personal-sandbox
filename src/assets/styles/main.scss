@@ -82,6 +82,8 @@ h6 {
 
 // Custom properties:
 
+$neutral-color: $green-m;
+
 // light mode
 $primary-color-l: $black;
 $secondary-color-l: $green-der;
@@ -100,6 +102,8 @@ $secondary-bg-color-d: $green-der;
 
 main,
 main * {
+  --neutral: #{$neutral-color};
+
   --primary-color: #{$primary-color-l};
   --secondary-color: #{$secondary-color-l};
   --error-color: #{$error-color-l};
@@ -129,13 +133,13 @@ main.dark * {
 }
 
 main {
-  background-color: var(--primary-bg-color);
+  background-color: hsl(var(--primary-bg-color));
 
   transition: background-color 0.7s ease-in-out;
 }
 
 main * {
-  color: var(--primary-color);
+  color: hsl(var(--primary-color));
 
   transition:
     background-color 0.7s ease-in-out,
@@ -143,7 +147,7 @@ main * {
 }
 
 main .error-message {
-  color: var(--error-color);
+  color: hsl(var(--error-color));
 }
 
 .sr-only {
@@ -162,7 +166,7 @@ main .error-message {
 main {
   min-height: 100svh;
 
-  @include responsive-grid($spacing-0500, $spacing-0000, 1, rem(1000));
+  @include responsive-grid($spacing-0300, $spacing-0000, 1, rem(1000));
 }
 
 header {
@@ -173,4 +177,8 @@ header {
 
 .content {
   grid-column: 2/-2;
+}
+
+i {
+  color: hsla(var(--secondary-color), 0.7);
 }

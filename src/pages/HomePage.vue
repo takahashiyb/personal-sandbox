@@ -4,6 +4,6 @@
 </template>
 <style scoped lang="scss">
 div {
-  background-color: var(--secondary-bg-color);
+  background-color: hsl(var(--secondary-bg-color));
 }
 </style>

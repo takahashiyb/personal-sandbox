@@ -23,7 +23,7 @@ const props = defineProps<{
 
   padding: v.$spacing-0100;
 
-  border: 2px solid var(--secondary-color);
+  border: 2px solid hsl(var(--secondary-color));
   border-radius: 9em;
 
   display: grid;
@@ -31,7 +31,7 @@ const props = defineProps<{
 }
 
 .theme-button svg {
-  background-color: var(--primary-bg-color);
+  background-color: hsl(var(--primary-bg-color));
   height: f.rem(24);
   width: f.rem(24);
 
@@ -39,7 +39,7 @@ const props = defineProps<{
 
   border-radius: 9em;
 
-  outline: 1px solid var(--primary-bg-color);
+  outline: 1px solid hsl(var(--primary-bg-color));
 
   transition:
     opacity 0.6s ease-out,
@@ -56,7 +56,7 @@ main.dark .theme-button svg {
 
 .theme-button svg * {
   transform-origin: center center;
-  stroke: var(--primary-color);
+  stroke: hsl(var(--primary-color));
 }
 
 .sun {
@@ -64,7 +64,7 @@ main.dark .theme-button svg {
 }
 
 .moon {
-  fill: var(--primary-color);
+  fill: hsl(var(--primary-color));
 }
 
 .sun,
