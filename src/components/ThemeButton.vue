@@ -18,7 +18,10 @@ const props = defineProps<{
 </template>
 <style scoped lang="scss">
 .theme-button {
-  background-color: transparent;
+  position: fixed;
+  top: v.$spacing-0200;
+
+  background-color: hsl(var(--primary-bg-color));
   cursor: pointer;
 
   padding: v.$spacing-0100;
