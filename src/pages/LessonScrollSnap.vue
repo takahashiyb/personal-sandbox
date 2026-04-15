@@ -57,6 +57,7 @@ const theme = useThemeStore()
           When the content is scrollable
           <i>(e.g.: html tag, container with an overflow: scroll;)</i>
         </li>
+        <li>When the content height is set</li>
       </ul>
     </div>
 
@@ -178,6 +179,12 @@ const theme = useThemeStore()
     </div>
   </div>
 </template>
+<style lang="scss">
+header {
+  background-color: transparent;
+}
+</style>
+
 <style scoped lang="scss">
 .content {
   scroll-snap-type: y mandatory;
