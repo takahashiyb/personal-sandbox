@@ -34,36 +34,34 @@ function checkvalidity(event: Event) {
 }
 </script>
 <template>
-  <label
-    :class="['text-input-1', 'text-input-1--' + props.name]"
-    data-function="input-label"
-    :for="id"
-  >
+  <div :class="['text-input-1', 'text-input-1--' + props.name]">
     <span class="label">
-      <slot></slot>
+      <slot name="label"></slot>
     </span>
-    <span class="error-message" data-function="error-message" :aria-errormessage="props.name">{{
+    <span class="error-message" data-function="error-message" :aria-errormessage="id">{{
       error
     }}</span>
-    <input
-      :id="id"
-      class="input"
-      v-model.lazy="model"
-      :name="props.name"
-      :data-function="`text-${props.name}`"
-      :type="type"
-      :placeholder="props.placeholder"
-      :required="props.required"
-      :readonly="props.readonly"
-      :autocomplete="props.autocomplete"
-      :minlength="props.minlength"
-      :maxlength="props.maxlength"
-      :min="props.min"
-      :max="props.max"
-      @focus="resetError"
-      @blur="checkvalidity"
-    />
-  </label>
+    <label :for="id">
+      <input
+        :id="id"
+        class="input"
+        v-model.lazy="model"
+        :name="props.name"
+        :data-function="`text-${props.name}`"
+        :type="type"
+        :placeholder="props.placeholder"
+        :required="props.required"
+        :readonly="props.readonly"
+        :autocomplete="props.autocomplete"
+        :minlength="props.minlength"
+        :maxlength="props.maxlength"
+        :min="props.min"
+        :max="props.max"
+        @focus="resetError"
+        @blur="checkvalidity"
+      />
+    </label>
+  </div>
 </template>
 <style scoped lang="scss">
 .text-input-1 {
@@ -84,13 +82,16 @@ function checkvalidity(event: Event) {
   grid-row: 1;
 }
 
+label {
+  // the Element
+  grid-column: 1/3;
+  grid-row: 2;
+}
+
 .input {
   min-width: 0;
   width: 100%;
   background-color: hsl(var(--primary-bg-color));
-
-  grid-column: 1/3;
-  grid-row: 2;
 
   border-width: 2px;
   border-style: solid;
