@@ -5,6 +5,7 @@ const props = defineProps<{
 </script>
 <template>
   <button class="theme-button" type="button" @click="props.buttonPress">
+    <span class="sr-only">button to switch themes</span>
     <svg class="moon" view-box="0 0 20 20">
       <path d="M1 10, A9 9 0 1 0 10 1, A7.5 7.5 0 1 1 1 10,Z" />
     </svg>
@@ -18,11 +19,12 @@ const props = defineProps<{
 </template>
 <style scoped lang="scss">
 .theme-button {
-  position: fixed;
-  top: v.$spacing-0200;
+  --button-size: 24px;
 
+  box-sizing: content-box;
   background-color: hsl(var(--primary-bg-color));
   cursor: pointer;
+  height: var(--button-size);
 
   padding: v.$spacing-0100;
 
@@ -35,8 +37,9 @@ const props = defineProps<{
 
 .theme-button svg {
   background-color: hsl(var(--primary-bg-color));
-  height: f.rem(24);
-  width: f.rem(24);
+
+  height: var(--button-size);
+  width: var(--button-size);
 
   padding: 2px;
 
