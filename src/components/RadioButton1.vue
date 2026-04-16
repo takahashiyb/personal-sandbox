@@ -6,6 +6,7 @@ const model = defineModel()
 const props = defineProps<{
   name: string
   value: string | number | null
+  required?: boolean
 }>()
 
 const click = ref<HTMLInputElement | null>(null)
@@ -29,6 +30,7 @@ function clickButton() {
       :name="props.name"
       :data-function="`radio-${props.name}`"
       :value="props.value"
+      :required="props.required"
       ref="click"
     />
   </label>
