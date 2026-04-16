@@ -31,10 +31,18 @@ const theme = useThemeStore()
         amet reiciendis hic repudiandae odit facere ipsam doloribus voluptatem! Lorem, ipsum dolor
         sit amet consectetur adipisicing elit. Odio optio quibusdam natus laborum adipisci beatae
         perspiciatis eveniet, recusandae laudantium consectetur magni tempore! Expedita repudiandae,
-        commodi id eum harum excepturi exercitationem.
+        commodi id eum harum excepturi exercitationem. Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Ipsum aperiam deleniti fuga modi est praesentium! Neque consequuntur
+        fugiat porro, molestiae veritatis beatae cum et aut incidunt quam similique dolor nesciunt?
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem, cum. Aliquid eos
+        molestiae ad tenetur amet at quia nesciunt? Tempore dicta amet reiciendis hic repudiandae
+        odit facere ipsam doloribus voluptatem! Lorem, ipsum dolor sit amet consectetur adipisicing
+        elit. Odio optio quibusdam natus laborum adipisci beatae perspiciatis eveniet, recusandae
+        laudantium consectetur magni tempore! Expedita repudiandae, commodi id eum harum excepturi
+        exercitationem.
       </p>
 
-      <div>
+      <div class="inbetween-text">
         <p>Because inbetween spaces, like this, look better when skipped.</p>
       </div>
 
@@ -46,7 +54,15 @@ const theme = useThemeStore()
         amet reiciendis hic repudiandae odit facere ipsam doloribus voluptatem! Lorem, ipsum dolor
         sit amet consectetur adipisicing elit. Odio optio quibusdam natus laborum adipisci beatae
         perspiciatis eveniet, recusandae laudantium consectetur magni tempore! Expedita repudiandae,
-        commodi id eum harum excepturi exercitationem.
+        commodi id eum harum excepturi exercitationem. Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Ipsum aperiam deleniti fuga modi est praesentium! Neque consequuntur
+        fugiat porro, molestiae veritatis beatae cum et aut incidunt quam similique dolor nesciunt?
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem, cum. Aliquid eos
+        molestiae ad tenetur amet at quia nesciunt? Tempore dicta amet reiciendis hic repudiandae
+        odit facere ipsam doloribus voluptatem! Lorem, ipsum dolor sit amet consectetur adipisicing
+        elit. Odio optio quibusdam natus laborum adipisci beatae perspiciatis eveniet, recusandae
+        laudantium consectetur magni tempore! Expedita repudiandae, commodi id eum harum excepturi
+        exercitationem.
       </p>
     </div>
 
@@ -179,11 +195,6 @@ const theme = useThemeStore()
     </div>
   </div>
 </template>
-<style lang="scss">
-header {
-  background-color: transparent;
-}
-</style>
 
 <style scoped lang="scss">
 .content {
@@ -191,20 +202,21 @@ header {
   scroll-behavior: smooth;
   overflow-y: scroll;
 
-  height: calc(100svh - 76px);
+  height: 100svh;
 
   display: grid;
-  grid-auto-rows: 90vh;
+  grid-auto-rows: 100svh;
   justify-content: center;
   align-items: center;
-  row-gap: 90vh;
 
   scrollbar-width: none;
+  scroll-padding-top: var(--header-height);
+  scroll-padding-bottom: calc(var(--header-height) / 2);
 }
 
 .block,
 h1,
-.inbetween-sample,
+.inbetween-text,
 .type-difference div {
   scroll-snap-align: center;
   scroll-snap-stop: always;
@@ -249,24 +261,20 @@ h2 {
   display: grid;
   grid-auto-rows: 1fr;
   align-content: center;
-  overflow: hidden;
+
+  opacity: 0;
 
   height: 100%;
 
   margin-inline: v.$spacing-0400;
 
-  animation: inbetween ease-in-out;
+  animation: inbetween linear;
   animation-timeline: view();
   animation-range: cover 0 end;
 }
 
-.inbetween-sample div {
-  height: 56svh;
-}
-
 .inbetween-sample div:nth-child(2) {
   height: 56svh;
-  color: hsl(var(--error-color));
 
   display: grid;
   align-items: center;
@@ -274,6 +282,19 @@ h2 {
 
 .inbetween-sample div:nth-child(2) p {
   color: hsl(var(--error-color));
+}
+
+@keyframes inbetween {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 .left {
@@ -364,28 +385,6 @@ h2 {
   to {
     opacity: 1;
     scale: 1;
-  }
-}
-
-@keyframes inbetween {
-  0% {
-    padding-top: 56svh;
-    overflow: visible;
-  }
-  50% {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-
-  99% {
-    overflow: visible;
-    padding-bottom: 56svh;
-  }
-
-  100% {
-    padding-bottom: 200svh;
-
-    overflow: hidden;
   }
 }
 
