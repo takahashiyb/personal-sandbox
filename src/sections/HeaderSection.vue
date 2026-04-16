@@ -10,15 +10,12 @@ function switchTheme() {
 </script>
 <template>
   <header>
-    <div class="header">
-      <ThemeButton :buttonPress="switchTheme" />
-    </div>
+    <ThemeButton :buttonPress="switchTheme" />
   </header>
 </template>
 <style scoped lang="scss">
-.header {
-  width: 100%;
-  max-width: f.rem(1200);
+header {
+  height: var(--header-height);
 
   padding-top: v.$spacing-0200;
   padding-bottom: v.$spacing-0200;
@@ -28,5 +25,8 @@ function switchTheme() {
   flex-direction: row-reverse;
 
   justify-self: center;
+
+  position: fixed;
+  top: 0;
 }
 </style>
