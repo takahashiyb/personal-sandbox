@@ -63,6 +63,10 @@ main.dark .theme-button svg {
 .theme-button svg * {
   transform-origin: center center;
   stroke: hsl(var(--primary-color));
+
+  transition:
+    background-color 0.7s ease-in-out,
+    stroke 0.7s ease-in-out;
 }
 
 .sun {

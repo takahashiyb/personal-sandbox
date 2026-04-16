@@ -157,10 +157,6 @@ main {
 
 main * {
   color: hsl(var(--primary-color));
-
-  transition:
-    background-color 0.7s ease-in-out,
-    stroke 0.7s ease-in-out;
 }
 
 main .error-message {
