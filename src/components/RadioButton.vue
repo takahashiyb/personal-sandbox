@@ -36,31 +36,33 @@ function resetError() {
 </RadioButton1>
 -->
 <template>
-  <span
-    class="error-message"
-    data-function="error-message"
-    :aria-errormessage="props.id"
-    v-if="error"
-    >{{ error }}</span
-  >
-  <label>
-    <input
-      class="sr-only"
-      type="radio"
-      v-model="model"
-      :name="props.name"
-      :data-function="`radio-${props.name}`"
-      :value="props.value"
-      :required="props.required"
-      ref="click"
-      @invalid="showError"
-      @change="resetError"
-    />
-  </label>
-  <div class="radio-display" :data-function="`radio-display-${props.name}`" @click="clickButton">
-    <span class="sr-only">This is a radio button, click to select this option.</span>
-    <slot></slot>
-  </div>
+  <section :class="['radio-input', 'radio-input--' + props.name, props.name]">
+    <span
+      class="error-message"
+      data-function="error-message"
+      :aria-errormessage="props.id"
+      v-if="error"
+      >{{ error }}</span
+    >
+    <div class="radio-display" :data-function="`radio-display-${props.name}`" @click="clickButton">
+      <span class="sr-only">This is a radio button, click to select this option.</span>
+      <slot></slot>
+    </div>
+    <label>
+      <input
+        class="sr-only"
+        type="radio"
+        v-model="model"
+        :name="props.name"
+        :data-function="`radio-${props.name}`"
+        :value="props.value"
+        :required="props.required"
+        ref="click"
+        @invalid="showError"
+        @change="resetError"
+      />
+    </label>
+  </section>
 </template>
 <style scoped lang="scss">
 // .class-of-container:has(label input:checked) .class-of-display --> additional selector to style selected radio button
