@@ -70,12 +70,12 @@
         <p>and finishes when its bottom enters the viewport</p>
       </div>
       <div class="box color row-excess" style="animation-range: exit-crossing">
-        <p>Exit-crossing starts its top touches the top of the viewport</p>
+        <p>Exit-crossing starts when its top touches the top of the viewport</p>
 
         <p>and finishes when its bottom touches the top of the viewport</p>
       </div>
       <div class="box color row-excess" style="animation-range: exit">
-        <p>Exit starts its bottom enters the viewport</p>
+        <p>Exit starts when its bottom enters the viewport</p>
 
         <p>and finishes when its bottom touches the top of the viewport</p>
       </div>
@@ -247,6 +247,7 @@ h1 {
 h2 {
   display: inline;
   padding-bottom: v.$spacing-0200;
+  text-align: center;
 }
 
 .view {
@@ -255,7 +256,6 @@ h2 {
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: var(--row-height);
   column-gap: f.em(24);
   row-gap: calc(((100svh - var(--row-height)) / 2) + 50px);
 }
@@ -263,6 +263,7 @@ h2 {
 .block {
   display: grid;
   justify-content: center;
+  justify-items: center;
   align-content: center;
   align-items: start;
 
@@ -276,6 +277,8 @@ h2 {
   justify-content: center;
   align-content: center;
   align-items: start;
+
+  height: 500px;
 
   padding-inline: v.$spacing-0200;
 
@@ -348,7 +351,7 @@ h2 {
 }
 
 .row-excess {
-  grid-row: span 2;
+  height: 150svh;
 }
 
 .ruler {
@@ -419,6 +422,8 @@ h2 {
     hsla(var(--primary-color), 0.3) 0px 30px 60px -30px,
     hsla(var(--primary-color), 0.35) 0px -2px 6px 0px inset;
 
+  padding-top: v.$spacing-0400;
+  padding-bottom: v.$spacing-0400;
   padding-inline: v.$spacing-0200;
 }
 
@@ -429,6 +434,10 @@ h2 {
 @media (min-width: f.em(700)) {
   h1 {
     font-size: f.rem(48);
+  }
+
+  .box {
+    padding-inline: v.$spacing-0400;
   }
 
   .view {
