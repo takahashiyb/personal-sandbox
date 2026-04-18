@@ -34,13 +34,8 @@ function checkvalidity(event: Event) {
 }
 </script>
 <template>
-  <div :class="['text-input-1', 'text-input-1--' + props.name]">
-    <span class="label">
-      <slot name="label"></slot>
-    </span>
-    <span class="error-message" data-function="error-message" :aria-errormessage="id">{{
-      error
-    }}</span>
+  <section :class="['text-input', 'text-input--' + props.name, props.name]">
+    <slot></slot>
     <label :for="id">
       <input
         :id="id"
@@ -61,33 +56,12 @@ function checkvalidity(event: Event) {
         @blur="checkvalidity"
       />
     </label>
-  </div>
+    <span class="error-message" data-function="error-message" :aria-errormessage="id">{{
+      error
+    }}</span>
+  </section>
 </template>
 <style scoped lang="scss">
-.text-input-1 {
-  display: grid;
-  grid-template-columns: min-content fit-content;
-  justify-content: space-between;
-}
-
-.label {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.error-message {
-  text-align: end;
-
-  grid-column: 2;
-  grid-row: 1;
-}
-
-label {
-  // the Element
-  grid-column: 1/3;
-  grid-row: 2;
-}
-
 .input {
   min-width: 0;
   width: 100%;
@@ -118,12 +92,12 @@ Documentation:
 - To use the component:
 
 ```
-  import TextInput1 from './components/TextInput1.vue';
+  import TextInput from './components/TextInput.vue';
 
   <template>
-    <TextInput1 v-model="needed" name="needed" type="" placeholder="" required="" readonly="" minlength="" maxlength="" min="" max="" autocomplete="">
-      <template v-slot:label></template>
-    </TextInput1>
+    <TextInput v-model="needed" name="needed" type="" placeholder="" required="" readonly="" minlength="" maxlength="" min="" max="" autocomplete="">
+      {{ Enter the input name here (including a tag like span or p) }}
+    </TextInput>
   </template>
 ```
 
@@ -131,12 +105,12 @@ Documentation:
 
   -- any boolean attributes may be expressed as ('required' in this example) which marks it true:
   ```
-    <TextInput1 v-model="example" name="example" type="text" required>
+    <TextInput v-model="example" name="example" type="text" required>
   ```
 
   -- or this way if it has logic or has reactive boolean variable:
   ```
-    <TextInput1 v-model="example" name="example" type="text" :required="requirement === true">
+    <TextInput v-model="example" name="example" type="text" :required="requirement === true">
   ```
 
 - ATTRIBUTES:
@@ -189,19 +163,10 @@ Documentation:
 
 - SLOT:
   -- This part of the component will allow you to add a label in the form of text.
-  -- can be done in these ways (Sample Label):
   ```
-  <TextInput1 v-model="sample" name="sample">
-    <template v-slot:label>Sample Label</template>
-  </TextInput1>
-  ```
-
-  or 
-
-  ```
-  <TextInput1 v-model="sample" name="sample">
-    Sample Label
-  </TextInput1>
+  <TextInput v-model="sample" name="sample">
+    <span> Sample Label </ span>
+  </TextInput>
 
   ```
 
@@ -209,31 +174,23 @@ Documentation:
   -- These can be done within the component itself through the style and script tags inside respectively
 
   -- you can also access the style of this component with a global css file with the class selector:
-    --- `text-input-1--${name attribute}`
+    --- `text-input--${name attribute}`
 
   -- to access an element inside:
-    --- .label = the text that is displayed to display the text in slot
+    --- input name/label as slot is already accessible since the parent is responsible for the slot. 
     --- .error-message = the text displayed when typed or non typed text is not within input rules
     --- .input = the input bar/ text field itself
     
-    ---* NOTE: You can access these in the main css file depending on its stages of specificity:
+    ---* NOTE: You can access these in the parent scoped style tag:
       ---- to style all with the same selector:
       ``` css
-      .label{}
-      .error-message{}
-      .input{}
-      ```
-      --- to style all of the same component:
-      ``` css
-      .text-input-1 label{}
-      .text-input-1 error-message{}
-      .text-input-1 input{}
-      ```
-      --- to style only for a specific component (no parenthesis '()'):
-      ``` css
-      .text-input-1--(name attribute) label{}
-      .text-input-1--(name attribute) error-message{}
-      .text-input-1--(name attribute) input{}
+      .container-name{} //container-name is the class you pass to the custom component
+      .input-name {} // input-name is just a placeholder name
+      .container-name :deep(.error-message){} 
+      .container-name :deep(label){}
+      .container-name :deep(.input){}
+      or
+      .container-name :deep(label .input){}
       ```
 
 -->
