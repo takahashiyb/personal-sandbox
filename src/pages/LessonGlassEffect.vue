@@ -2,13 +2,39 @@
 import ShowNotes from '@/components/ShowNotes.vue'
 import { ref } from 'vue'
 
-const page1 = ref<boolean>(true)
+const page1 = ref<boolean>(false)
+const page2 = ref<boolean>(false)
+const page3 = ref<boolean>(false)
+const page4 = ref<boolean>(false)
+const page5 = ref<boolean>(false)
+const page6 = ref<boolean>(false)
+const page7 = ref<boolean>(false)
+const page8 = ref<boolean>(false)
 </script>
 <template>
   <div class="content">
     <h1>FROSTED BLUR</h1>
     <div class="container">
       <div class="container__notes">
+        <h2>To use this lesson:</h2>
+      </div>
+      <div class="container__glass">
+        <div class="glass" style="border: 2px hsl(var(--primary-color)) dashed"></div>
+      </div>
+      <div class="container__ball">
+        <div class="ball"></div>
+        <span class="ball__message ball__message--1">
+          Throughout the lesson, there will be a glass div where the dashed rectangle.</span
+        >
+        <span class="ball__message ball__message--2">
+          Take your time moving the ball into it to see the glass effect.</span
+        >
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="container__notes">
+        <h2>Basic blur effect:</h2>
         <ShowNotes name="see-more" v-model="page1">
           <template v-slot:message>
             <p class="checkbox-message">{{ page1 ? 'hide' : 'show' }} CSS:</p>
@@ -41,12 +67,14 @@ const page1 = ref<boolean>(true)
 
     <div class="container">
       <div class="container__notes">
-        <ShowNotes name="see-more" v-model="page1">
+        <h2>Extend the blur to anticipate its nearing</h2>
+        <ShowNotes name="see-more" v-model="page2">
           <template v-slot:message>
             <p class="checkbox-message">{{ page1 ? 'hide' : 'show' }} CSS:</p>
           </template>
           <template v-slot:show>
             <div class="container__styling">
+              <span class="properties"> // nest .backdrop in .glass </span>
               <span class="properties">
                 .backdrop {
                 <span class="properties"> height: 300%; </span>
@@ -72,7 +100,8 @@ const page1 = ref<boolean>(true)
 
     <div class="container">
       <div class="container__notes">
-        <ShowNotes name="see-more" v-model="page1">
+        <h2>Hide the excess of the backdrop</h2>
+        <ShowNotes name="see-more" v-model="page3">
           <template v-slot:message>
             <p class="checkbox-message">{{ page1 ? 'hide' : 'show' }} CSS:</p>
           </template>
@@ -104,7 +133,8 @@ const page1 = ref<boolean>(true)
 
     <div class="container">
       <div class="container__notes">
-        <ShowNotes name="see-more" v-model="page1">
+        <h2>For compatibility</h2>
+        <ShowNotes name="see-more" v-model="page4">
           <template v-slot:message>
             <p class="checkbox-message">{{ page1 ? 'hide' : 'show' }} CSS:</p>
           </template>
@@ -144,7 +174,7 @@ const page1 = ref<boolean>(true)
       <div class="container__notes--text">
         <h2 class="error">But now the text behind the backdrop is not interactive.</h2>
         <br />
-        <ShowNotes name="see-more" v-model="page1">
+        <ShowNotes name="see-more" v-model="page5">
           <template v-slot:message>
             <p class="checkbox-message">{{ page1 ? 'hide' : 'show' }} explanation:</p>
           </template>
@@ -191,7 +221,7 @@ const page1 = ref<boolean>(true)
 
     <div class="container--text">
       <div class="container__notes--text">
-        <ShowNotes name="see-more" v-model="page1">
+        <ShowNotes name="see-more" v-model="page6">
           <template v-slot:message>
             <p class="checkbox-message">{{ page1 ? 'hide' : 'show' }} CSS:</p>
           </template>
@@ -259,7 +289,7 @@ const page1 = ref<boolean>(true)
     <div class="container">
       <div class="container__notes">
         <h2>Make the glass look more opaque.</h2>
-        <ShowNotes name="see-more" v-model="page1">
+        <ShowNotes name="see-more" v-model="page7">
           <template v-slot:message>
             <p class="checkbox-message">{{ page1 ? 'hide' : 'show' }} CSS:</p>
           </template>
@@ -303,7 +333,7 @@ const page1 = ref<boolean>(true)
     <div class="container">
       <div class="container__notes">
         <h2>You can give it a more reflective edge.</h2>
-        <ShowNotes name="see-more" v-model="page1">
+        <ShowNotes name="see-more" v-model="page8">
           <template v-slot:message>
             <p class="checkbox-message">{{ page1 ? 'hide' : 'show' }} CSS:</p>
           </template>
@@ -401,6 +431,7 @@ h1,
   display: grid;
   justify-content: center;
   justify-items: center;
+  align-items: center;
 }
 
 .ball {
@@ -412,7 +443,10 @@ h1,
 
 .ball__message {
   padding-inline: v.$spacing-0200;
-  padding-top: v.$spacing-0200;
+}
+
+.ball__message--2 {
+  display: none;
 }
 
 .container__glass {
@@ -539,6 +573,10 @@ h1,
       grid-column: 3;
       grid-row: 1;
     }
+  }
+
+  .ball__message--2 {
+    display: block;
   }
 }
 
