@@ -1,19 +1,15 @@
 <script setup lang="ts">
 import ShowNotes from '@/components/ShowNotes.vue'
-import { ref } from 'vue'
-
-const page1 = ref<boolean>(false)
-const page2 = ref<boolean>(false)
-const page3 = ref<boolean>(false)
-const page4 = ref<boolean>(false)
-const page5 = ref<boolean>(false)
-const page6 = ref<boolean>(false)
-const page7 = ref<boolean>(false)
-const page8 = ref<boolean>(false)
 </script>
 <template>
   <div class="content">
-    <h1>FROSTED BLUR</h1>
+    <div class="title">
+      <h1>FROSTED BLUR</h1>
+      <i>a lesson from Josh W. Comeau</i>
+      <a href="https://www.joshwcomeau.com/css/backdrop-filter/" target="_blank"
+        >link to his lesson</a
+      >
+    </div>
     <div class="container">
       <div class="container__notes">
         <h2>To use this lesson:</h2>
@@ -24,10 +20,10 @@ const page8 = ref<boolean>(false)
       <div class="container__ball">
         <div class="ball"></div>
         <span class="ball__message ball__message--1">
-          Throughout the lesson, there will be a glass div where the dashed rectangle.</span
+          Throughout the lesson, there will be a glass div where the dashed rectangle is.</span
         >
         <span class="ball__message ball__message--2">
-          Take your time moving the ball into it to see the glass effect.</span
+          Take your time moving the ball in and out of it to see the glass effect.</span
         >
       </div>
     </div>
@@ -35,19 +31,15 @@ const page8 = ref<boolean>(false)
     <div class="container">
       <div class="container__notes">
         <h2>Basic blur effect:</h2>
-        <ShowNotes name="see-more" v-model="page1">
-          <template v-slot:message>
-            <p class="checkbox-message">{{ page1 ? 'hide' : 'show' }} CSS:</p>
-          </template>
+        <ShowNotes name="see-more" class="hello">
+          <template v-slot:message> Click to open/close Code </template>
           <template v-slot:show>
-            <div class="container__styling">
-              <span class="properties">
-                .glass {
-                <span class="properties">height: 100px;</span>
-                <span class="properties">backdrop-filter: blur(10px)</span>
-                }
-              </span>
-            </div>
+            <pre><code>
+.glass {
+  height: 100px;
+  backdrop-filter: blur(10px);
+}
+            </code></pre>
           </template>
         </ShowNotes>
       </div>
@@ -68,20 +60,17 @@ const page8 = ref<boolean>(false)
     <div class="container">
       <div class="container__notes">
         <h2>Extend the blur to anticipate its nearing</h2>
-        <ShowNotes name="see-more" v-model="page2">
-          <template v-slot:message>
-            <p class="checkbox-message">{{ page1 ? 'hide' : 'show' }} CSS:</p>
-          </template>
+        <ShowNotes name="see-more">
+          <template v-slot:message> Click to open/close Code </template>
           <template v-slot:show>
-            <div class="container__styling">
-              <span class="properties"> // nest .backdrop in .glass </span>
-              <span class="properties">
-                .backdrop {
-                <span class="properties"> height: 300%; </span>
-                <span class="properties"> backdrop-filter: blur(16px); </span>
-                }
-              </span>
-            </div>
+            <pre><code>
+// nest .backdrop in .glass 
+
+.backdrop {
+  height: 300%; 
+  backdrop-filter: blur(16px); 
+}
+            </code></pre>
           </template>
         </ShowNotes>
       </div>
@@ -101,18 +90,14 @@ const page8 = ref<boolean>(false)
     <div class="container">
       <div class="container__notes">
         <h2>Hide the excess of the backdrop</h2>
-        <ShowNotes name="see-more" v-model="page3">
-          <template v-slot:message>
-            <p class="checkbox-message">{{ page1 ? 'hide' : 'show' }} CSS:</p>
-          </template>
+        <ShowNotes name="see-more">
+          <template v-slot:message> Click to open/close Code </template>
           <template v-slot:show>
-            <div class="container__styling">
-              <span class="properties">
-                .glass {
-                <span class="properties"> overflow: hidden; </span>
-                }
-              </span>
-            </div>
+            <pre><code>
+.glass {
+  overflow: hidden;
+}
+            </code></pre>
           </template>
         </ShowNotes>
       </div>
@@ -134,25 +119,19 @@ const page8 = ref<boolean>(false)
     <div class="container">
       <div class="container__notes">
         <h2>For compatibility</h2>
-        <ShowNotes name="see-more" v-model="page4">
-          <template v-slot:message>
-            <p class="checkbox-message">{{ page1 ? 'hide' : 'show' }} CSS:</p>
-          </template>
+        <ShowNotes name="see-more">
+          <template v-slot:message> Click to open/close Code </template>
           <template v-slot:show>
-            <div class="container__styling">
-              <span class="properties">
-                .backdrop {
-                <span class="properties"
-                  >mask-image: linear-gradient(
-                  <span class="properties">to bottom,</span>
-                  <span class="properties">transparent 0% 20%,</span>
-                  <span class="properties">black 20% 80%,</span>
-                  <span class="properties">transparent 80% 100%</span>
-                  );
-                </span>
-                }
-              </span>
-            </div>
+            <pre><code>
+.backdrop {
+    mask-image: linear-gradient(
+    to bottom,
+    transparent 0% 20%,
+    black 20% 80%,
+    transparent 80% 100%
+  );                
+}
+            </code></pre>
           </template>
         </ShowNotes>
       </div>
@@ -174,10 +153,8 @@ const page8 = ref<boolean>(false)
       <div class="container__notes--text">
         <h2 class="error">But now the text behind the backdrop is not interactive.</h2>
         <br />
-        <ShowNotes name="see-more" v-model="page5">
-          <template v-slot:message>
-            <p class="checkbox-message">{{ page1 ? 'hide' : 'show' }} explanation:</p>
-          </template>
+        <ShowNotes name="see-more">
+          <template v-slot:message> Click to open/close Explanation </template>
           <template v-slot:show>
             <div class="container__styling">
               <span>
@@ -220,19 +197,15 @@ const page8 = ref<boolean>(false)
     </div>
 
     <div class="container--text">
-      <div class="container__notes--text">
-        <ShowNotes name="see-more" v-model="page6">
-          <template v-slot:message>
-            <p class="checkbox-message">{{ page1 ? 'hide' : 'show' }} CSS:</p>
-          </template>
+      <div class="container__notes">
+        <ShowNotes name="see-more">
+          <template v-slot:message> Click to open/close Code: </template>
           <template v-slot:show>
-            <div class="container__styling">
-              <span class="properties">
-                .backdrop {
-                <span class="properties"> pointer-events: none;</span>
-                }
-              </span>
-            </div>
+            <pre><code>
+.backdrop {
+  pointer-events: none;
+}
+              </code></pre>
           </template>
         </ShowNotes>
       </div>
@@ -289,20 +262,14 @@ const page8 = ref<boolean>(false)
     <div class="container">
       <div class="container__notes">
         <h2>Make the glass look more opaque.</h2>
-        <ShowNotes name="see-more" v-model="page7">
-          <template v-slot:message>
-            <p class="checkbox-message">{{ page1 ? 'hide' : 'show' }} CSS:</p>
-          </template>
+        <ShowNotes name="see-more">
+          <template v-slot:message> Click to open/close Code: </template>
           <template v-slot:show>
-            <div class="container__styling">
-              <span class="properties">
-                .glass {
-                <span class="properties">
-                  background-color: hsla(var(--primary-bg-color), 50%); // Higher Opacity
-                </span>
-                }
-              </span>
-            </div>
+            <pre><code>
+.glass {
+  background-color: hsla(var(--primary-bg-color), 50%);   // Higher Opacity
+}
+            </code></pre>
           </template>
         </ShowNotes>
       </div>
@@ -333,28 +300,22 @@ const page8 = ref<boolean>(false)
     <div class="container">
       <div class="container__notes">
         <h2>You can give it a more reflective edge.</h2>
-        <ShowNotes name="see-more" v-model="page8">
-          <template v-slot:message>
-            <p class="checkbox-message">{{ page1 ? 'hide' : 'show' }} CSS:</p>
-          </template>
+        <ShowNotes name="see-more">
+          <template v-slot:message> Click to open/close Code: </template>
           <template v-slot:show>
-            <div class="container__styling">
-              <span class="properties">
-                .edge {
-                <span class="properties"> --thickness: 6px; </span>
-                <span class="properties"> height: 100%; </span>
-                <span class="properties">backdrop-filter: blur(12px) brightness(120%); </span>
-                <span class="properties"
-                  >mask-image: linear-gradient(
-                  <span class="properties">to bottom, black 0, </span>
-                  <span class="properties">black var(--thickness), </span>
-                  <span class="properties">transparent var(--thickness) </span>
-                  );
-                </span>
-                }
-              </span>
-              <i class="properties">Note that this is only for bottom edge</i>
-            </div>
+            <pre><code>
+.edge {
+  --thickness: 6px;
+  height: 100%;
+  backdrop-filter: blur(12px) brightness(120%);
+  mask-image: linear-gradient(
+    to bottom, black 0, 
+    black var(--thickness), 
+    transparent var(--thickness) 
+  );
+}
+// Note that the code display is only for bottom edge only.
+            </code></pre>
           </template>
         </ShowNotes>
       </div>
@@ -371,6 +332,98 @@ const page8 = ref<boolean>(false)
       </div>
     </div>
 
+    <div class="container">
+      <div class="container__notes">
+        <h2>
+          But with the properties above, we cannot create rounded edges. So, we need to use a
+          different method.
+        </h2>
+        <ShowNotes name="see-more">
+          <template v-slot:message> Click to open/close explanation: </template>
+          <template v-slot:show>
+            <div class="container__styling">
+              <span
+                >The likely explanation here is that naturally elements are squares and rectangles
+                and the border-radius is solely for style, it still occupies the space created by
+                the rounded corner.
+              </span>
+            </div>
+          </template>
+        </ShowNotes>
+      </div>
+
+      <div class="container__glass">
+        <div class="glass short">
+          <div class="backdrop blur mask"></div>
+        </div>
+      </div>
+      <div class="container__ball" style="width: min-content; justify-self: center">
+        <div class="ball ball__message--1"></div>
+        <div class="ball"></div>
+        <div class="ball ball__message--2"></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="container__notes">
+        <h2>So, we can use svg with mask.</h2>
+        <ShowNotes name="see-more">
+          <template v-slot:message>Click to open/close Code:</template>
+          <template v-slot:show>
+            <pre><code>
+&lt;div class="svg-backdrop"&gt;&lt;/div&gt;
+&lt;svg class="svg-mask" width="100%" height="100%" preserveAspectRatio="none"&gt;
+  &lt;mask id="frostyGlassMask"&gt;
+    &lt;rect class="header-rect" width="100%" height="100%" fill="white" rx="8" ry="8" /&gt;
+  &lt;/mask&gt;
+&lt;/svg&gt;
+&lt;style&gt;
+  .svg-mask {
+    width: 100px;
+    position: absolute;
+    inset: 0;
+  }
+  .svg-backdrop {
+    position: absolute;
+    inset: 0;
+    height: 200%;
+    width: 100px;
+    justify-self: center;
+    backdrop-filter: blur(16px);
+    mask-image: url(#frostyGlassMask);
+  }
+&lt;/style&gt;
+            </code></pre>
+          </template>
+        </ShowNotes>
+      </div>
+
+      <div class="container__glass">
+        <div class="glass short">
+          <div class="svg-backdrop"></div>
+          <svg class="svg-mask" width="100%" height="100%" preserveAspectRatio="none">
+            <mask id="frostyGlassMask">
+              <rect class="header-rect" width="100%" height="100%" fill="white" rx="8" ry="8" />
+            </mask>
+          </svg>
+        </div>
+      </div>
+      <div class="container__ball" style="width: min-content; justify-self: center">
+        <div class="ball ball__message--1"></div>
+        <div class="ball"></div>
+        <div class="ball ball__message--2"></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="container__notes">
+        <h2>
+          Still reseaching... I am currently looking for a way to properly implement the reflective
+          edges with rounded corners
+        </h2>
+      </div>
+    </div>
+
     <div class="container"></div>
   </div>
 </template>
@@ -383,11 +436,10 @@ const page8 = ref<boolean>(false)
   height: 100svh;
 }
 
-h1 {
-  line-height: 100vh;
+.title {
   text-align: center;
-  display: block;
-  font-size: f.rem(24);
+  display: grid;
+  align-content: center;
 }
 
 .error {
@@ -399,12 +451,25 @@ h2.error {
   background-color: hsl(var(--primary-bg-color));
 }
 
-h1,
+.title,
 .container,
 .container--text {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   height: 100svh;
+}
+
+.container__notes--text :deep(.checkbox__message),
+.container__notes :deep(.checkbox__message) {
+  background-color: transparent;
+  color: hsl(var(--neutral));
+  border: none;
+}
+
+.container__notes--text :deep(.checkbox__shown),
+.container__notes :deep(.checkbox__shown) {
+  top: anchor(bottom);
+  left: anchor(left);
 }
 
 .ball.white {
@@ -488,6 +553,7 @@ h1,
 }
 
 .container__styling {
+  max-width: 25svw;
   background-color: hsl(var(--primary-bg-color));
 
   padding: v.$spacing-0200;
@@ -495,9 +561,15 @@ h1,
   border: 1px solid hsl(var(--primary-brdr-color));
 }
 
-.properties {
+code {
+  background-color: hsl(var(--primary-bg-color));
+
+  padding: v.$spacing-0200;
+
+  border: 1px solid hsl(var(--primary-brdr-color));
+
   display: block;
-  padding-left: 2em;
+  padding: 2em;
 
   font-size: 12px;
 }
@@ -645,5 +717,30 @@ h1,
     black var(--thickness),
     transparent var(--thickness)
   );
+}
+
+.short {
+  width: 100px;
+  justify-self: center;
+  position: relative;
+}
+
+.svg-mask {
+  position: absolute;
+  inset: 0;
+}
+
+.svg-backdrop {
+  position: absolute;
+  height: 400%;
+  width: 200px;
+  backdrop-filter: blur(16px);
+  mask-image: url(#frostyGlassMask);
+}
+
+.svg-shape {
+  width: 200px;
+  position: absolute;
+  inset: 0;
 }
 </style>
