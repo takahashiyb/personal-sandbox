@@ -1,4 +1,5 @@
 import HomePage from '@/pages/HomePage.vue'
+import LessonBoxShadow from '@/pages/LessonBoxShadow.vue'
 import LessonDashboard from '@/pages/LessonDashboard.vue'
 import LessonGlassEffect from '@/pages/LessonGlassEffect.vue'
 import LessonParent from '@/pages/LessonParent.vue'
@@ -22,6 +23,11 @@ const router = createRouter({
           path: 'glass-effect',
           name: 'glass-effect',
           component: LessonGlassEffect,
+        },
+        {
+          path: 'box-shadow',
+          name: 'box-shadow',
+          component: LessonBoxShadow,
         },
       ],
     },
