@@ -100,8 +100,8 @@ $error-color-d: $orange-l;
 $primary-bg-color-d: $black;
 $secondary-bg-color-d: $green-der;
 
-main,
-main * {
+html,
+html * {
   // Colors
 
   --neutral: #{$neutral-color};
@@ -121,8 +121,8 @@ main * {
   --secondary-brdr-color: #{$secondary-color-l};
 }
 
-main.dark,
-main.dark * {
+html:has(.theme-button.dark),
+html:has(.theme-button.dark) * {
   --primary-color: #{$primary-color-d};
   --secondary-color: #{$secondary-color-d};
 

@@ -1,10 +1,14 @@
 <script setup lang="ts">
-const props = defineProps<{
-  buttonPress: () => void
-}>()
+import { ref } from 'vue'
+
+const isDark = ref(false)
+
+function switchThemes() {
+  isDark.value = !isDark.value
+}
 </script>
 <template>
-  <button class="theme-button" type="button" @click="props.buttonPress">
+  <button :class="['theme-button', { dark: isDark }]" type="button" @click="switchThemes">
     <span class="sr-only">button to switch themes</span>
     <svg class="moon" view-box="0 0 20 20">
       <path d="M1 10, A9 9 0 1 0 10 1, A7.5 7.5 0 1 1 1 10,Z" />
@@ -50,23 +54,39 @@ const props = defineProps<{
   transition:
     opacity 0.6s ease-out,
     box-shadow 0.7s;
-}
 
-main .theme-button svg {
   box-shadow: -15px 0 0 0 black;
+
+  .moon {
+    opacity: 0;
+  }
+
+  .sun {
+    opacity: 1;
+  }
 }
 
-main.dark .theme-button svg {
-  box-shadow: 15px 0 0 0 white;
-}
-
-.theme-button svg * {
+.theme-button * {
   transform-origin: center center;
   stroke: hsl(var(--primary-color));
 
   transition:
     background-color 0.7s ease-in-out,
     stroke 0.7s ease-in-out;
+}
+
+.dark.theme-button svg {
+  box-shadow: 15px 0 0 0 white;
+}
+
+.dark {
+  .moon {
+    opacity: 1;
+  }
+
+  .sun {
+    opacity: 0;
+  }
 }
 
 .sun {
@@ -81,15 +101,5 @@ main.dark .theme-button svg {
 .moon {
   grid-column: 1;
   grid-row: 1;
-}
-
-main.dark .sun,
-main .moon {
-  opacity: 0;
-}
-
-main.dark .moon,
-main .sun {
-  opacity: 1;
 }
 </style>
