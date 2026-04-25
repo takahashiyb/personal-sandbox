@@ -93,7 +93,6 @@ const theme = useThemeStore()
       <p>}</p>
       <br />
       <p>direction:</p>
-      <i>(could be omitted if it scrolls horizontally and vertically)</i>
       <ul>
         <li>x = horizontal scroll</li>
         <li>y = vertical scroll</li>
