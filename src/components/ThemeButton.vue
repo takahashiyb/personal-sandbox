@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { useDark, useToggle } from '@vueuse/core'
+// import { ref } from 'vue'
 
-const isDark = ref(false)
+const isDark = useDark()
 
-function switchThemes() {
-  isDark.value = !isDark.value
-}
+const toggleDark = useToggle(isDark)
 </script>
 <template>
-  <button :class="['theme-button', { dark: isDark }]" type="button" @click="switchThemes">
+  <button class="theme-button" type="button" @click="toggleDark()">
     <span class="sr-only">button to switch themes</span>
     <svg class="moon" view-box="0 0 20 20">
       <path d="M1 10, A9 9 0 1 0 10 1, A7.5 7.5 0 1 1 1 10,Z" />
@@ -34,6 +33,8 @@ function switchThemes() {
 
   border: 2px solid hsl(var(--secondary-color));
   border-radius: 9em;
+
+  margin-inline: v.$spacing-0100;
 
   display: grid;
   justify-content: center;
@@ -75,18 +76,16 @@ function switchThemes() {
     stroke 0.7s ease-in-out;
 }
 
-.dark.theme-button svg {
+.dark .theme-button svg {
   box-shadow: 15px 0 0 0 white;
 }
 
-.dark {
-  .moon {
-    opacity: 1;
-  }
+.dark .moon {
+  opacity: 1;
+}
 
-  .sun {
-    opacity: 0;
-  }
+.dark .sun {
+  opacity: 0;
 }
 
 .sun {

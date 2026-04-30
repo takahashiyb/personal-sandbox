@@ -100,29 +100,13 @@ $error-color-d: $orange-l;
 $primary-bg-color-d: $black;
 $secondary-bg-color-d: $green-der;
 
-html,
-html * {
-  // Colors
-
-  --neutral: #{$neutral-color};
-
-  --primary-color: #{$primary-color-l};
-  --secondary-color: #{$secondary-color-l};
-
-  --primary-color-rev: #{$primary-color-d};
-  --secondary-color-rev: #{$secondary-color-d};
-
-  --error-color: #{$error-color-l};
-
-  --primary-bg-color: #{$primary-bg-color-l};
-  --secondary-bg-color: #{$secondary-bg-color-l};
-
-  --primary-brdr-color: #{$primary-color-l};
-  --secondary-brdr-color: #{$secondary-color-l};
+html {
+  transition: background-color 0.7s ease-in-out;
+  background-color: hsl(var(--primary-bg-color));
+  color: hsl(var(--primary-color));
 }
 
-html:has(.theme-button.dark),
-html:has(.theme-button.dark) * {
+html.dark {
   --primary-color: #{$primary-color-d};
   --secondary-color: #{$secondary-color-d};
 
@@ -138,10 +122,25 @@ html:has(.theme-button.dark) * {
   --secondary-brdr-color: #{$secondary-color-d};
 }
 
-:root {
+html {
+  --neutral: #{$neutral-color};
+
+  --primary-color: #{$primary-color-l};
+  --secondary-color: #{$secondary-color-l};
+
+  --primary-color-rev: #{$primary-color-d};
+  --secondary-color-rev: #{$secondary-color-d};
+
+  --error-color: #{$error-color-l};
+
+  --primary-bg-color: #{$primary-bg-color-l};
+  --secondary-bg-color: #{$secondary-bg-color-l};
+
+  --primary-brdr-color: #{$primary-color-l};
+  --secondary-brdr-color: #{$secondary-color-l};
   // Other properties:
 
-  --header-height: 72px; // theme button is already @ 34px,
+  --header-height: f.em(34); // theme button is already @ 34px,
   // header has padding top and bottom of 16px, which theme button ignores
 }
 
@@ -149,17 +148,7 @@ html:has(.theme-button.dark) * {
   font-family: 'Outfit';
 }
 
-main {
-  background-color: hsl(var(--primary-bg-color));
-
-  transition: background-color 0.7s ease-in-out;
-}
-
-main * {
-  color: hsl(var(--primary-color));
-}
-
-main .error-message {
+.error-message {
   color: hsl(var(--error-color));
 }
 
@@ -196,4 +185,32 @@ header {
 
 i {
   color: hsla(var(--secondary-color), 0.7);
+}
+
+a:visited {
+  color: hsla(var(--secondary-color), 1);
+}
+
+a {
+  color: hsl(var(--primary-color));
+}
+
+button {
+  background-color: hsl(var(--primary-color));
+  color: hsl(var(--primary-color-rev));
+
+  border-color: hsl(var(--secondary-brdr-color));
+
+  transition:
+    color 0.3s,
+    background-color 0.3s;
+}
+
+button:active {
+  border-color: hsl(var(--primary-color-rev));
+}
+
+button:hover {
+  background-color: hsl(var(--primary-color-rev));
+  color: hsl(var(--neutral));
 }
